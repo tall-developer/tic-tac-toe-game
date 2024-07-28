@@ -83,7 +83,7 @@ button:hover {
 }
 
 .reset-button {
-    width: 100%;
+    width: 94%;
     /* Ensure the reset button takes the full width of the game container */
     margin-top: 10px;
 }
