@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let aiPlayer = '';
     let board = ['', '', '', '', '', '', '', '', ''];
     let isGameActive = true;
+    let isRematch = false; // New flag to track if it's a rematch
 
     const winningConditions = [
         [0, 1, 2],
@@ -117,6 +118,11 @@ document.addEventListener('DOMContentLoaded', () => {
         cells.forEach(cell => {
             cell.textContent = '';
         });
+
+        if (isRematch) {
+            // If it's a rematch, AI makes the first move
+            setTimeout(aiMove, 1000); // AI move delay of 1 second
+        }
     };
 
     const startGame = (player) => {
@@ -125,12 +131,18 @@ document.addEventListener('DOMContentLoaded', () => {
         introScreen.classList.add('hidden');
         gameScreen.classList.remove('hidden');
         resetGame();
+        isRematch = false; // Reset the rematch flag
+    };
+
+    const startRematch = () => {
+        isRematch = true; // Set the rematch flag
+        resetGame();
     };
 
     chooseXButton.addEventListener('click', () => startGame('X'));
     chooseOButton.addEventListener('click', () => startGame('O'));
-    resetButton.addEventListener('click', resetGame);
-    restartButton.addEventListener('click', resetGame);
+    resetButton.addEventListener('click', () => startGame(currentPlayer)); // Start a new game with the current player
+    restartButton.addEventListener('click', startRematch); // Start a rematch
     exitButton.addEventListener('click', () => {
         gameAlert.classList.add('hidden');
         overlay.classList.add('hidden');
