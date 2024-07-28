@@ -29,22 +29,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const handleResultValidation = () => {
         let roundWon = false;
-        for (const element of winningConditions) {
-            const winCondition = element;
-            const a = board[winCondition[0]];
-            const b = board[winCondition[1]];
-            const c = board[winCondition[2]];
-            if (a === '' || b === '' || c === '') {
-                continue;
-            }
-            if (a === b && b === c) {
+        let winningPlayer = '';
+
+        for (const condition of winningConditions) {
+            const [a, b, c] = condition.map(index => board[index]);
+
+            if (a !== '' && a === b && b === c) {
                 roundWon = true;
+                winningPlayer = a;
                 break;
             }
         }
 
         if (roundWon) {
-            setTimeout(() => showResult(currentPlayer), 200);
+            setTimeout(() => showResult(winningPlayer), 200);
             isGameActive = false;
             return;
         }
