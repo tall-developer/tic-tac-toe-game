@@ -10,12 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const restartButton = document.getElementById('restart-button');
     const exitButton = document.getElementById('exit-button');
     const overlay = document.getElementById('overlay');
+    const currentMoveText = document.getElementById('current-move');
 
     let currentPlayer = '';
     let aiPlayer = '';
     let board = ['', '', '', '', '', '', '', '', ''];
     let isGameActive = true;
-    let isRematch = false; // New flag to track if it's a rematch
+    let isRematch = false;
 
     const winningConditions = [
         [0, 1, 2],
@@ -27,6 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
         [0, 4, 8],
         [2, 4, 6]
     ];
+
+    const updateCurrentMoveText = () => {
+        if (isGameActive) {
+            currentMoveText.textContent = `Player ${currentPlayer}'s move`;
+        }
+    };
 
     const handleResultValidation = () => {
         let roundWon = false;
@@ -71,6 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const handlePlayerChange = () => {
         currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+        updateCurrentMoveText(); // Update the text when player changes
         if (currentPlayer === aiPlayer) {
             setTimeout(aiMove, 1000); // AI move delay of 1 second
         }
@@ -120,9 +128,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (isRematch) {
-            // If it's a rematch, AI makes the first move
             setTimeout(aiMove, 1000); // AI move delay of 1 second
         }
+
+        updateCurrentMoveText(); // Update the move text when game resets
     };
 
     const startGame = (player) => {
@@ -131,18 +140,18 @@ document.addEventListener('DOMContentLoaded', () => {
         introScreen.classList.add('hidden');
         gameScreen.classList.remove('hidden');
         resetGame();
-        isRematch = false; // Reset the rematch flag
+        isRematch = false;
     };
 
     const startRematch = () => {
-        isRematch = true; // Set the rematch flag
+        isRematch = true;
         resetGame();
     };
 
     chooseXButton.addEventListener('click', () => startGame('X'));
     chooseOButton.addEventListener('click', () => startGame('O'));
-    resetButton.addEventListener('click', () => startGame(currentPlayer)); // Start a new game with the current player
-    restartButton.addEventListener('click', startRematch); // Start a rematch
+    resetButton.addEventListener('click', () => startGame(currentPlayer));
+    restartButton.addEventListener('click', startRematch);
     exitButton.addEventListener('click', () => {
         gameAlert.classList.add('hidden');
         overlay.classList.add('hidden');

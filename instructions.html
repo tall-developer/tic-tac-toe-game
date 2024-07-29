@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructions</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* General styling for the instructions page */
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            background-color: #f0f0f0;
+        }
+
+        .instructions-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .instructions-container h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .instructions-container p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="instructions-container">
+        <h1>Game Instructions</h1>
+        <p>Here are the instructions for playing Tic-Tac-Toe...</p>
+
+        <ul>
+            Player X goes first, followed by Player O.</l>
+            Players take turns placing their mark (X or O) in one of the nine cells.</li>
+            The first player to align three of their marks in a row, column, or diagonal wins.</li>
+            If all cells are filled and no player has won, the game ends in a draw.</li>
+        </ul><a href="index.html" class="back-button">Back to Game</a>
+    </div>
+    <script src="instructions.js"></script>
+</body>
+
+</html>

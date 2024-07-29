@@ -13,14 +13,17 @@
         <div class="max-w-xs w-full bg-white rounded-lg shadow-lg p-6" id="intro-screen">
             <h2 class="text-2xl font-bold text-center mb-4">Choose Your Player</h2>
             <div class="flex justify-around mb-4">
-                <button
-                    class="w-1/3 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    id="choose-x">Play as X</button>
-                <button
-                    class="w-1/3 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    id="choose-o">Play as O</button>
+                <div class="player-card" id="choose-x">X</div>
+                <div class="player-card" id="choose-o">O</div>
             </div>
         </div>
+    
+        <div class="icon-container">
+            <img src="instructions-icon.png" alt="Instructions" class="icon-button">
+            <img src="credits-icon.png" alt="Credits" class="icon-button">
+        </div>
+    </div>
+
 
         <div class="max-w-xs w-full bg-white rounded-lg shadow-lg p-6 hidden" id="game-screen">
             <h2 class="text-2xl font-bold text-center mb-4">Tic-Tac-Toe</h2>
@@ -56,11 +59,9 @@
             </span>
             <p class="alert">Game Results!</p>
         </div>
-
         <p class="message" id="alert-message">
             <!-- Dynamic message content goes here -->
         </p>
-
         <div class="actions">
             <a class="restart" href="#" id="restart-button">Rematch</a>
             <a class="exit" href="#" id="exit-button">Exit</a>
